@@ -40,16 +40,13 @@
       font-size: 18px;
       transition: color 0.3s ease;
     }
-
     nav ul li a:hover {
       color: #ffeb3b;
     }
-
     section {
       padding: 80px 20px;
       transition: background 0.5s ease;
     }
-
     section h2 {
       display: flex;
       justify-content: center;
@@ -57,7 +54,6 @@
       margin-bottom: 40px;
       font-size: 28px;
     }
-
     #home {
       background: #009688;
       color: white;
@@ -67,29 +63,43 @@
       align-items: center;
       flex-wrap: wrap;
     }
-
     #home-text {
       flex: 1;
       min-width: 250px;
     }
-
     #home-img {
       flex: 1;
       min-width: 250px;
       text-align: center;
     }
-
-    #home-img img {
-      width: 165px;
-      height: 165px;
-      border-radius: 50%;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* Hexagon profile image styling */
+    .hexagon {
+      position: relative;
+      width: 200px;
+      aspect-ratio: 1 / 1;
+      margin: auto;
+      clip-path: polygon(
+        25% 6.7%, 75% 6.7%,
+        100% 50%, 75% 93.3%,
+        25% 93.3%, 0% 50%
+      );
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      border: 5px solid #fff;
+      background: linear-gradient(135deg, #00bcd4, #009688);
     }
-
+    .hexagon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .hexagon:hover img {
+      transform: scale(1.05);
+    }
     #about {
       background: #e0f7fa;
     }
-
     .about-container {
       display: flex;
       max-width: 1000px;
@@ -97,49 +107,62 @@
       gap: 30px;
       flex-wrap: wrap;
     }
-
     .about-left {
       flex: 4;
       min-width: 250px;
     }
-
     .about-right {
       flex: 3;
       min-width: 250px;
     }
-
     .about-info p {
       margin: 10px 0;
       padding-left: 20px;
       position: relative;
       font-weight: 500;
     }
-
     .about-info p::before {
       content: "➤";
       position: absolute;
       left: 0;
       color: #009688;
     }
-
+    /* Social Links Styling */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 40px;
+    }
+    .social-links a {
+      font-size: 40px;
+      color: #333;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+    .social-links a:hover {
+      transform: scale(1.2);
+    }
+    .social-links a[title="LinkedIn"]:hover {
+      color: #0077b5;
+    }
+    .social-links a[title="GitHub"]:hover {
+      color: #000;
+    }
     #skills {
       background: #fffde7;
     }
-
     .skill-item {
       margin: 20px auto;
       font-size: 18px;
       max-width: 600px;
       text-align: left;
     }
-
     .skill-label {
       font-weight: bold;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-
     .skill-bar {
       background: #ddd;
       border-radius: 20px;
@@ -147,7 +170,6 @@
       margin-top: 10px;
       position: relative;
     }
-
     .skill-fill {
       background: #4caf50;
       height: 20px;
@@ -157,7 +179,6 @@
       border-radius: 20px 0 0 20px;
       position: relative;
     }
-
     .skill-fill span {
       position: absolute;
       top: -25px;
@@ -166,11 +187,9 @@
       font-size: 14px;
       font-weight: bold;
     }
-
     #education {
       background: #e8f5e9;
     }
-
     .education-box {
       background: white;
       padding: 20px;
@@ -181,16 +200,13 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       font-weight: 500;
     }
-
     .education-box:hover {
       transform: translateY(-5px);
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
     }
-
     #projects {
       background: #fce4ec;
     }
-
     .project {
       background: white;
       padding: 20px;
@@ -201,18 +217,15 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       font-weight: 500;
     }
-
     .project:hover {
       transform: translateY(-5px);
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
     }
-
     @keyframes fadeIn {
       from {
         opacity: 0;
         transform: translateY(20px);
       }
-
       to {
         opacity: 1;
         transform: translateY(0);
@@ -241,7 +254,9 @@
       <p>{{ tagline }}</p>
     </div>
     <div id="home-img">
-      <img src="WhatsApp Image 2025-04-13 at 03.19.51_34069721.jpg" alt="Profile Photo">
+      <div class="hexagon">
+        <img src="WhatsApp Image 2025-04-13 at 03.19.51_34069721.jpg" alt="Profile Photo">
+      </div>
       <p style="font-size: 40px;"><strong>Kavan Parekh</strong> </p>
     </div>
   </section>
@@ -266,11 +281,19 @@
         <p>City: Ahmedabad, Gujarat, India</p>
       </div>
     </div>
+    <!-- Social Links -->
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/kavan-parekh-b39345271/" target="_blank" title="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/kavanparekh99" target="_blank" title="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
   </section>
 
   <section id="skills">
     <h2>Skills</h2>
-    
     <div class="skill-item" ng-repeat="skill in skills">
       <div class="skill-label">
         {{ skill.name }} <span style="font-weight: normal; color: black;">{{ skill.level }}%</span>
@@ -285,20 +308,18 @@
 
   <section id="education">
     <h2>Education</h2>
-
     <div class="education-box">
       <p><strong>Bachelor of Engineering in Information and Technology</strong></p>
-      <p> Sal Engineering and Technical Institute,(Ahmedabad, Gujarat)</p>
+      <p>Gujrat Technological University</p>
+      <p>Sal Engineering and Technical Institute, (Ahmedabad, Gujarat)</p>
       <p>(Sep 2022 – Jun 2026)</p>
+      <p>CGPA : 8.13 </p>
     </div>
-
     <div class="education-box">
       <p><strong>Higher Secondary School</strong></p>
-      <p>Saint Xavier High School,(Bhavnagar,Gujarat)</p>
+      <p>Saint Xavier High School, (Bhavnagar, Gujarat)</p>
       <p>(Apr 2020 – Jun 2022)</p>
     </div>
-
-   
   </section>
 
   <section id="projects">
@@ -313,24 +334,26 @@
     const app = angular.module('portfolioApp', []);
     app.controller('MainController', function ($scope) {
       $scope.title = "Welcome to My Portfolio";
-      $scope.tagline = "Hi! I'm Parekh Kavan,currently pursuing my bachelor's degree at SAL Engineering and Technical Institute. As a pre-final year student, I'm committed to honing my skills and exploring innovative ways to create engaging and functional web solutions.I thrive in the world of coding and design, with a particular fondness for web development. My journey has been fueled by curiosity and dedication, and I enjoy turning ideas into digital reality. Whether it's crafting dynamic websites or solving complex programming challenges, I embrace every opportunity to learn and grow.Let’s connect and create something amazing together!";
+      $scope.tagline = "Hi! I'm Parekh Kavan,currently pursuing my bachelor's degree at SAL Engineering and Technical Institute. As a final year student, I'm committed to honing my skills and exploring innovative ways to create engaging and functional web solutions.I thrive in the world of coding and design, with a particular fondness for web development. My journey has been fueled by curiosity and dedication, and I enjoy turning ideas into digital reality. Whether it's crafting dynamic websites or solving complex programming challenges, I embrace every opportunity to learn and grow.Let’s connect and create something amazing together!";
       $scope.skills = [
         { name: "HTML", level: 90 },
         { name: "CSS", level: 85 },
         { name: "JavaScript", level: 80 },
         { name: "AngularJS", level: 75 },
         { name: "Bootstrap", level: 80 },
+        { name: "React.js" , level: 65 },
         { name: "Node.js", level: 70 }
       ];
       $scope.projects = [
-        { name: "Food Recipe Website", description: "The Food Recipe Search App is a dynamic web application that allows users to search for recipes by entering specific food items or ingredients. The app fetches real-time data from a public recipe API and displays a list of matching recipes with detailed information, such as ingredients, cooking instructions, and preparation time." },
+        { name: "Real-Time Chat Application (MERN Stack)", description: "Developed a full-featured chat platform with one-on-one and group chat functionality, real-time messaging using Socket.IO, and secure user authentication via JWT and cookies. Implemented image uploads with Cloudinary and managed both frontend (React) and backend (Node.js, Express, MongoDB) development, including REST API design, real-time event handling, and responsive UI creation." },
 
-        { name: "Repair For You", description: "Repair4U is an informative and user-friendly website designed to help users find reliable repair solutions and spare part information for various computer components. The platform provides detailed guides, troubleshooting tips, and part specifications to assist users in identifying and resolving hardware issues.." },
+        { name: " Food Delivery Website (React + Vite) ", description: " Built a responsive and user-friendly food ordering platform with cart management and real-time order placement. Designed for scalability with planned features including push notifications, delivery tracking, user authentication, and payment gateway integration. Focused on performance optimization, clean code architecture, and an intuitive UI for a seamless user experience." },
 
-        { name: "TIC TAC TOE ", description: " Created Tic Tac Toe Game using HTML,CSS,JAVASCRIPT. Where 2 player can play the game. In the game either you can win, loose or tie happened." }
+        { name: "Food Recipe Website (JavaScript)", description: "The Food Recipe Search App is a dynamic web application that allows users to search for recipes by entering specific food items or ingredients. The app fetches real-time data from a public recipe API and displays a list of matching recipes with detailed information, such as ingredients, cooking instructions, and preparation time." },
+
+
       ];
     });
   </script>
 </body>
-
 </html>
