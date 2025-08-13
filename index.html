@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="portfolioApp">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -72,7 +72,6 @@
       min-width: 250px;
       text-align: center;
     }
-    /* Hexagon profile image styling */
     .hexagon {
       position: relative;
       width: 200px;
@@ -127,7 +126,6 @@
       left: 0;
       color: #009688;
     }
-    /* Social Links Styling */
     .social-links {
       display: flex;
       justify-content: center;
@@ -232,10 +230,9 @@
       }
     }
   </style>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 </head>
 
-<body ng-controller="MainController">
+<body>
   <header>
     <nav>
       <ul>
@@ -250,8 +247,8 @@
 
   <section id="home">
     <div id="home-text">
-      <h1>{{ title }}</h1>
-      <p>{{ tagline }}</p>
+      <h1>Welcome to My Portfolio</h1>
+      <p>Hi! I'm Parekh Kavan, currently pursuing my bachelor's degree at SAL Engineering and Technical Institute. As a final year student, I'm committed to honing my skills and exploring innovative ways to create engaging and functional web solutions. I thrive in the world of coding and design, with a particular fondness for web development. My journey has been fueled by curiosity and dedication, and I enjoy turning ideas into digital reality. Whether it's crafting dynamic websites or solving complex programming challenges, I embrace every opportunity to learn and grow. Let’s connect and create something amazing together!</p>
     </div>
     <div id="home-img">
       <div class="hexagon">
@@ -281,7 +278,6 @@
         <p>City: Ahmedabad, Gujarat, India</p>
       </div>
     </div>
-    <!-- Social Links -->
     <div class="social-links">
       <a href="https://www.linkedin.com/in/kavan-parekh-b39345271/" target="_blank" title="LinkedIn">
         <i class="fab fa-linkedin"></i>
@@ -294,15 +290,29 @@
 
   <section id="skills">
     <h2>Skills</h2>
-    <div class="skill-item" ng-repeat="skill in skills">
-      <div class="skill-label">
-        {{ skill.name }} <span style="font-weight: normal; color: black;">{{ skill.level }}%</span>
-      </div>
-      <div class="skill-bar">
-        <div class="skill-fill" ng-style="{'width': skill.level + '%'}">
-          <span>{{ skill.level }}%</span>
-        </div>
-      </div>
+    <div class="skill-item">
+      <div class="skill-label">HTML <span>90%</span></div>
+      <div class="skill-bar"><div class="skill-fill" style="width: 90%;"><span>90%</span></div></div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-label">CSS <span>85%</span></div>
+      <div class="skill-bar"><div class="skill-fill" style="width: 85%;"><span>85%</span></div></div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-label">JavaScript <span>80%</span></div>
+      <div class="skill-bar"><div class="skill-fill" style="width: 80%;"><span>80%</span></div></div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-label">Bootstrap <span>80%</span></div>
+      <div class="skill-bar"><div class="skill-fill" style="width: 80%;"><span>80%</span></div></div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-label">React.js <span>65%</span></div>
+      <div class="skill-bar"><div class="skill-fill" style="width: 65%;"><span>65%</span></div></div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-label">Node.js <span>70%</span></div>
+      <div class="skill-bar"><div class="skill-fill" style="width: 70%;"><span>70%</span></div></div>
     </div>
   </section>
 
@@ -324,36 +334,18 @@
 
   <section id="projects">
     <h2>Projects</h2>
-    <div class="project" ng-repeat="project in projects">
-      <h3>{{ project.name }}</h3>
-      <p>{{ project.description }}</p>
+    <div class="project">
+      <h3>Real-Time Chat Application (MERN Stack)</h3>
+      <p>Developed a full-featured chat platform with one-on-one and group chat functionality, real-time messaging using Socket.IO, and secure user authentication via JWT and cookies. Implemented image uploads with Cloudinary and managed both frontend (React) and backend (Node.js, Express, MongoDB) development, including REST API design, real-time event handling, and responsive UI creation.</p>
+    </div>
+    <div class="project">
+      <h3>Food Delivery Website (React + Vite)</h3>
+      <p>Built a responsive and user-friendly food ordering platform with cart management and real-time order placement. Designed for scalability with planned features including push notifications, delivery tracking, user authentication, and payment gateway integration. Focused on performance optimization, clean code architecture, and an intuitive UI for a seamless user experience.</p>
+    </div>
+    <div class="project">
+      <h3>Food Recipe Website (JavaScript)</h3>
+      <p>The Food Recipe Search App is a dynamic web application that allows users to search for recipes by entering specific food items or ingredients. The app fetches real-time data from a public recipe API and displays a list of matching recipes with detailed information, such as ingredients, cooking instructions, and preparation time.</p>
     </div>
   </section>
-
-  <script>
-    const app = angular.module('portfolioApp', []);
-    app.controller('MainController', function ($scope) {
-      $scope.title = "Welcome to My Portfolio";
-      $scope.tagline = "Hi! I'm Parekh Kavan,currently pursuing my bachelor's degree at SAL Engineering and Technical Institute. As a final year student, I'm committed to honing my skills and exploring innovative ways to create engaging and functional web solutions.I thrive in the world of coding and design, with a particular fondness for web development. My journey has been fueled by curiosity and dedication, and I enjoy turning ideas into digital reality. Whether it's crafting dynamic websites or solving complex programming challenges, I embrace every opportunity to learn and grow.Let’s connect and create something amazing together!";
-      $scope.skills = [
-        { name: "HTML", level: 90 },
-        { name: "CSS", level: 85 },
-        { name: "JavaScript", level: 80 },
-        { name: "AngularJS", level: 75 },
-        { name: "Bootstrap", level: 80 },
-        { name: "React.js" , level: 65 },
-        { name: "Node.js", level: 70 }
-      ];
-      $scope.projects = [
-        { name: "Real-Time Chat Application (MERN Stack)", description: "Developed a full-featured chat platform with one-on-one and group chat functionality, real-time messaging using Socket.IO, and secure user authentication via JWT and cookies. Implemented image uploads with Cloudinary and managed both frontend (React) and backend (Node.js, Express, MongoDB) development, including REST API design, real-time event handling, and responsive UI creation." },
-
-        { name: " Food Delivery Website (React + Vite) ", description: " Built a responsive and user-friendly food ordering platform with cart management and real-time order placement. Designed for scalability with planned features including push notifications, delivery tracking, user authentication, and payment gateway integration. Focused on performance optimization, clean code architecture, and an intuitive UI for a seamless user experience." },
-
-        { name: "Food Recipe Website (JavaScript)", description: "The Food Recipe Search App is a dynamic web application that allows users to search for recipes by entering specific food items or ingredients. The app fetches real-time data from a public recipe API and displays a list of matching recipes with detailed information, such as ingredients, cooking instructions, and preparation time." },
-
-
-      ];
-    });
-  </script>
 </body>
 </html>
